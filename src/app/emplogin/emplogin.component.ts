@@ -67,9 +67,7 @@ export class EmploginComponent implements OnInit {
       }
     );
   } 
-
   countTasksByStatus(): void {
-    // Reset the counts before updating
     this.taskCountByStatus = {
       'Open': 0,
       'WIP': 0,
