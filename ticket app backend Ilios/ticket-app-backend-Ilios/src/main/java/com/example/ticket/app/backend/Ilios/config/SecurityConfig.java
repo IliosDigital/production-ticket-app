@@ -24,20 +24,20 @@ public class SecurityConfig {
         http.cors(c -> c.configurationSource(corsConfigurationSource()))            
                 .csrf(csrf -> csrf.disable())                
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/**").permitAll() // Allow all requests to /api/**
-                        .anyRequest().authenticated() // Secure all other requests
+                        .requestMatchers("/api/**").permitAll() 
+                        .anyRequest().authenticated() 
                 );
         return http.build();
     }
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("*")); // Allow all origins
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Allow all HTTP methods
-        configuration.setAllowedHeaders(Arrays.asList("*")); // Allow all headers
+        configuration.setAllowedOrigins(Arrays.asList("*")); 
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS")); 
+        configuration.setAllowedHeaders(Arrays.asList("*")); 
         configuration.setAllowCredentials(false); // Do not allow credentials (set to true if needed)
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/api/**", configuration); // Apply this CORS configuration to /api/** endpoints
+        source.registerCorsConfiguration("/api/**", configuration);
         return source;
     }
 }
